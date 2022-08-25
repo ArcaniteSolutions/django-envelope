@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
-
 """
 Contact form class definitions.
 """
@@ -12,7 +8,7 @@ from smtplib import SMTPException
 from django import forms
 from django.core import mail
 from django.template.loader import render_to_string
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from envelope import settings
 from envelope.signals import after_send
@@ -65,7 +61,7 @@ class ContactForm(forms.Form):
         for kwarg in list(kwargs):
             if hasattr(self, kwarg):
                 setattr(self, kwarg, kwargs.pop(kwarg))
-        super(ContactForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def save(self):
         """
